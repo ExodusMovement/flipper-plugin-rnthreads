@@ -18,7 +18,7 @@ import LaunchScreen from './LaunchScreen';
 import SelectScreen from './SelectScreen';
 import ErrorScreen from './ErrorScreen';
 import ChromeDevTools from './ChromeDevTools';
-import { PluginClient } from 'flipper-plugin';
+import { PluginClient, DevicePluginClient } from 'flipper-plugin';
 
 const POLL_SECS = 5 * 1000;
 const METRO_PORT_ENV_VAR = process.env.METRO_SERVER_PORT || '8081';
@@ -61,7 +61,7 @@ const Container = styled(FlexColumn)({
   backgroundColor: colors.light02,
 });
 
-export function plugin(client: PluginClient<EventSource, {}>) {}
+export function devicePlugin(client: DevicePluginClient) {}
 
 export function Component() {
   const [selectedTarget, setSelectedTarget] = useState<Target | null>(null)
@@ -84,7 +84,7 @@ export function Component() {
         // We only want to use the Reanimated Reload targets.
         const targets_ = result.filter(
           (target: any) =>
-            target.title === 'Reanimated Runtime Experimental (Improved Chrome Reloads)'
+            target.title === 'RNThreads Experimental (Improved Chrome Reloads)'
         );
 
         // Find the currently selected target.

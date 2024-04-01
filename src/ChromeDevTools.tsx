@@ -8,6 +8,8 @@
  */
 
 import React from 'react';
+// TODO: Fix this the next time the file is edited.
+// eslint-disable-next-line rulesdir/no-restricted-imports-clone
 import {styled, colors, FlexColumn} from 'flipper';
 
 const devToolsNodeId = (url: string) =>
@@ -19,6 +21,7 @@ const TARGET_CONTAINER_ID = 'flipper-out-of-contents-container'; // should be a 
 
 function createDevToolsNode(
   url: string,
+  marginTop: string | null,
 ): HTMLElement {
   const existing = findDevToolsNode(url);
   if (existing) {
@@ -41,25 +44,43 @@ function createDevToolsNode(
 
   wrapper.appendChild(iframe);
 
+  if (marginTop) {
+    // TODO: Fix this the next time the file is edited.
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    document.getElementById(TARGET_CONTAINER_ID)!.style.marginTop = marginTop;
+  }
+
+  // TODO: Fix this the next time the file is edited.
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   document.getElementById(TARGET_CONTAINER_ID)!.appendChild(wrapper);
   return wrapper;
 }
 
 function findDevToolsNode(url: string): HTMLElement | null {
-  return document.querySelector('#' + devToolsNodeId(url));
+  return document.querySelector(`#${devToolsNodeId(url)}`);
 }
 
 function attachDevTools(devToolsNode: HTMLElement) {
   devToolsNode.style.display = 'block';
+  // TODO: Fix this the next time the file is edited.
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   document.getElementById(TARGET_CONTAINER_ID)!.style.display = 'block';
+  // TODO: Fix this the next time the file is edited.
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   document.getElementById(TARGET_CONTAINER_ID)!.parentElement!.style.display =
     'block';
+  // TODO: Fix this the next time the file is edited.
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   document.getElementById(TARGET_CONTAINER_ID)!.parentElement!.style.height =
     '100%';
 }
 
 function detachDevTools(devToolsNode: HTMLElement | null) {
+  // TODO: Fix this the next time the file is edited.
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   document.getElementById(TARGET_CONTAINER_ID)!.style.display = 'none';
+  // TODO: Fix this the next time the file is edited.
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   document.getElementById(TARGET_CONTAINER_ID)!.parentElement!.style.display =
     'none';
 
@@ -78,11 +99,12 @@ const EmptyContainer = styled(FlexColumn)({
 
 type ChromeDevToolsProps = {
   url: string;
+  marginTop: string | null;
 };
 
 export default class ChromeDevTools extends React.Component<ChromeDevToolsProps> {
-  createDevTools(url: string) {
-    const devToolsNode = createDevToolsNode(url);
+  createDevTools(url: string, marginTop: string | null) {
+    const devToolsNode = createDevToolsNode(url, marginTop);
     attachDevTools(devToolsNode);
   }
 
@@ -91,7 +113,7 @@ export default class ChromeDevTools extends React.Component<ChromeDevToolsProps>
   }
 
   componentDidMount() {
-    this.createDevTools(this.props.url);
+    this.createDevTools(this.props.url, this.props.marginTop);
   }
 
   componentWillUnmount() {
@@ -103,7 +125,7 @@ export default class ChromeDevTools extends React.Component<ChromeDevToolsProps>
     const newUrl = this.props.url;
     if (oldUrl != newUrl) {
       this.hideDevTools(oldUrl);
-      this.createDevTools(newUrl);
+      this.createDevTools(newUrl, this.props.marginTop);
     }
   }
 

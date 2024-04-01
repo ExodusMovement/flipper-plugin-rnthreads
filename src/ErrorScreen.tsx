@@ -8,6 +8,8 @@
  */
 
 import React from 'react';
+// TODO: Fix this the next time the file is edited.
+// eslint-disable-next-line rulesdir/no-restricted-imports-clone
 import {styled, FlexColumn, FlexRow, Text, Glyph, colors} from 'flipper';
 
 const Container = styled(FlexColumn)({
@@ -97,7 +99,7 @@ export default function ErrorScreen(props: Props) {
   return (
     <Container>
       <Welcome>
-        <Title>Reanimated Hermes Debugger Error</Title>
+        <Title>Hermes Debugger Error</Title>
         <Item>
           <Icon size={20} name="caution-octagon" color={colors.red} />
           <FlexColumn>{getReason(props.error)}</FlexColumn>

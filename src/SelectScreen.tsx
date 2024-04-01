@@ -7,15 +7,17 @@
  * @format
  */
 
-import React from 'react';
-import {styled, FlexColumn, FlexRow, Text, Glyph, colors} from 'flipper';
-import {Target, Targets} from './index';
+import React from "react";
+// TODO: Fix this the next time the file is edited.
+// eslint-disable-next-line rulesdir/no-restricted-imports-clone
+import { styled, FlexColumn, FlexRow, Text, Glyph, colors } from "flipper";
+import { Target, Targets } from "./index";
 
 const Container = styled(FlexColumn)({
-  height: '100%',
-  width: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
+  height: "100%",
+  width: "100%",
+  justifyContent: "center",
+  alignItems: "center",
   backgroundColor: colors.light02,
 });
 
@@ -23,15 +25,15 @@ const Welcome = styled(FlexColumn)({
   width: 460,
   background: colors.white,
   borderRadius: 10,
-  boxShadow: '0 1px 3px rgba(0,0,0,0.25)',
-  overflow: 'hidden',
-  transition: '0.6s all ease-out',
+  boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
+  overflow: "hidden",
+  transition: "0.6s all ease-out",
 });
 
 const Title = styled(Text)({
   fontSize: 24,
   fontWeight: 300,
-  textAlign: 'center',
+  textAlign: "center",
   color: colors.light50,
   marginTop: 16,
   marginBottom: 16,
@@ -39,14 +41,14 @@ const Title = styled(Text)({
 
 const Item = styled(FlexRow)({
   padding: 10,
-  alignItems: 'center',
+  alignItems: "center",
   borderTop: `1px solid ${colors.light10}`,
 });
 
 const ItemTitle = styled(Text)({
   color: colors.light50,
   fontSize: 14,
-  lineHeight: '20px',
+  lineHeight: "20px",
 });
 
 const Icon = styled(Glyph)({
@@ -63,7 +65,7 @@ export default function SelectScreen(props: Props) {
   return (
     <Container>
       <Welcome>
-        <Title>Reanimated Hermes Debugger Select</Title>
+        <Title>Hermes Debugger Select</Title>
         <Item>
           <FlexColumn>
             <ItemTitle>Please select a target:</ItemTitle>

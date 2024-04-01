@@ -8,6 +8,8 @@
  */
 
 import React from 'react';
+// TODO: Fix this the next time the file is edited.
+// eslint-disable-next-line rulesdir/no-restricted-imports-clone
 import {styled, FlexColumn, FlexRow, Text, Glyph, colors} from 'flipper';
 
 const Container = styled(FlexColumn)({
@@ -66,7 +68,7 @@ export default function LaunchScreen() {
           <Icon size={20} name="question-circle" color={colors.info} />
           <FlexColumn>
             <ItemTitle>
-              <Bold>Metro is connected but no Reanimated (Hermes) apps were found.</Bold>{' '}
+              <Bold>Metro is connected but no Hermes apps were found.</Bold>{' '}
               Open a React Native screen with Hermes enabled to connect. Note:
               you may need to reload the app in order to reconnect the device to
               Metro.
